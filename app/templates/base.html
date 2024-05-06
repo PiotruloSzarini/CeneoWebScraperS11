@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceneo Scraper</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <header>
+        <h1>Ceneo.pl Scraper</h1>
+    </header>
+    <section>
+        {% block content %}
+        <p>To jest strona Główna</p>
+        {% endblock %}
+    </section>
+    <footer>
+        <p>Piotr Szarek, Uniwersytet Ekonomiczny Kraków</p>
+    </footer>
+</body>
+</html>
