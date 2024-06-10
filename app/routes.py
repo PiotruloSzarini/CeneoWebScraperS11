@@ -89,11 +89,13 @@ def download_csv(product_id):
     buffer = io.BytesIO(opinions.to_csv(sep=";", decimal=",", index = False).encode())
     return send_file(buffer, "text/csv", as_attachment=True , download_name=f"{product_id}.csv") 
 
-@app.route('/product/download_xlsx/<product_id>')
+@app.route('/product/download_csv/<product_id>')
 def download_csv(product_id):
-    opinions = pd.read_json(f"opinions/{product_id}.json")
-    opinions.stars = opinions.stars.apply(lambda s: "'"+s)
-    buffer = io.BytesIO(opinions.to_csv(sep=";", decimal=",", index = False).encode())
-    return send_file(buffer, "text/csv", as_attachment=True , download_name=f"{product_id}.csv") 
-    
-    
+    opinions = pd.read_json(f"app/opinions/{product_id}.json")
+    opinions.stars = opinions.stars.apply(lambda s: "'" + s)
+    buffer = io.BytesIO(opinions.to_csv(sep=';', decimal=",", index=False).encode())
+    return send_file(buffer, "text/csv", as_attachment=True, download_name = f"{product_id}.csv")
+
+@app.route('/product/download_xlsx/<product_id>')
+def download_xlsx(product_id):
+    pass

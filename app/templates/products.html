@@ -1,4 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-    <p>To jest strona products {{product_id}}</p>
+    <h2 class="text-center mt-4 mb-4">Lista produktów</h2>
+
+    <ol>
+    {% for product in products %}
+        <a href="{{ url_for('product', product_id=product.product_id) }}" class="fs-5 text-body"><li>{{ product.product_name }}</li></a>
+    {% endfor %}
+    </ol>
+
+
+    {% if error is defined %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong> <i class="bi bi-exclamation-diamond-fill"></i>Uawga!</strong>{{error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
 {% endblock %}
